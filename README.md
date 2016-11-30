@@ -4,7 +4,8 @@ AcuCOBOL IPC Library
 This is a simple project, which bind IPC calls to runcbl of AcuCOBOL v9.x for AIX.
 </p>
 
-<ul>Platform: 
+Platform:
+<ul> 
   <li>AIX5.3
   <li>AIX6.1
   <li>AIX7.1
@@ -13,7 +14,8 @@ This is a simple project, which bind IPC calls to runcbl of AcuCOBOL v9.x for AI
 Compiler: GNU/gcc 4.8.5 
 </p>
 
-<ul>Features:
+Features:
+<ul>
   <li>SYS/V, POSIX Message Queue 
   <li>Not Supported yet: Semaphore, SharedMemory, MemoryMappedFile 
 </ul>  
