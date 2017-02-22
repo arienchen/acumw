@@ -1,0 +1,355 @@
+      * MWAPI.DEF - MIDDLEWARE API CONSTANT 
+      * 
+      * LAST MODIFIED: 2016-08-01 ARIEN.
+      *
+      * Copyright (c)  by Fubon Securities
+      * 
+      * Change Logs:
+      * 2016-08-01 ARIEN 
+      *   CREATED 
+      *----------------------------------------------------      
+      * MW UTILS OP CODE 
+      *----------------------------------------------------      
+        01  UTILS_OP_CODE                        SIGNED-INT.
+            78  TICKS_MSEC                          VALUE 1.
+            78  TICKS_USEC                          VALUE 2.
+            78  TICKS_NSEC                          VALUE 3.
+       
+            78  SLEEP_MSEC                          VALUE 4.
+            78  SLEEP_USEC                          VALUE 5.
+            78  SLEEP_NSEC                          VALUE 6.
+      
+            78  SPENT_MSEC                          VALUE 7.
+            78  SPENT_USEC                          VALUE 8.
+            78  SPENT_NSEC                          VALUE 9.
+      
+            78  READ_ENTER                          VALUE 11.
+      
+      *----------------------------------------------------
+      * TICKS_XXXX 取得系統的 Tick
+      *   TICKS_MSEC 時間單位 ms = Millisecond = 1/1000 sec 
+      *   TICKS_USEC 時間單位 us = Microsecond = 1/1000 ms 
+      *   TICKS_NSEC 時間單位 ns = Nanosecond  = 1/1000 us  
+      *
+      * 參數： 
+      *   BY REFERENCE SIGNED-LONG 回傳系統的 Tick 值
+      *
+      * 回傳值：
+      *   無
+      *----------------------------------------------------  
+      * SLEEP_XXXX 執行系統 SLEEP
+      *   SLEEP_MSEC 時間單位 ms = Millisecond = 1/1000 sec 
+      *   SLEEP_USEC 時間單位 us = Microsecond = 1/1000 ms 
+      *   SLEEP_NSEC 時間單位 ns = Nanosecond  = 1/1000 us  
+      *
+      * 參數： 
+      *   BY VALUE SIGNED-LONG SLEEP等待時間
+      *
+      * 回傳值：
+      *   無
+      *----------------------------------------------------             
+      * SPENT_XXXX 計算目前系統 Tick 時間差
+      *   SPENT_MSEC 時間單位 ms = Millisecond = 1/1000 sec 
+      *   SPENT_USEC 時間單位 us = Microsecond = 1/1000 ms 
+      *   SPENT_NSEC 時間單位 ns = Nanosecond  = 1/1000 us  
+      *
+      * 參數： 
+      *   BY VALUE     SIGNED-LONG 上次執行 TICKS_XXX 的值
+      *   BY REFERENCE SIGNED-LONG 兩次執行間的時間差
+      *
+      * 回傳值：
+      *   無
+      *----------------------------------------------------             
+      * READ_ENTER 
+      * 
+      * 讀取 stdin 直到按下 ENTER (block mode)
+      *  
+      * 參數： 
+      *   無
+      *
+      * 回傳值：
+      *   無
+      *----------------------------------------------------             
+      
+      *----------------------------------------------------      
+      * MW STR OP CODE 
+      *----------------------------------------------------      
+        01  STR_OP_CODE                          SIGNED-INT.
+      *     78  STR_RTRIM                           VALUE 1.
+      *     78  STR_LTRIM                           VALUE 2.
+            78  INT_STR                             VALUE 3.
+            78  UINT_STR                            VALUE 4.
+            78  LONG_STR                            VALUE 5.
+            78  ULONG_STR                           VALUE 6.
+            78  OCT_STR                             VALUE 7.
+            78  HEX_STR                             VALUE 8.
+            78  SERROR                              VALUE 9.
+        01  STR_CONSTANTS                        SIGNED-INT.
+            78  FILE_NAME_LEN                     VALUE 255.     
+      *----------------------------------------------------   
+      * OCT_STR 
+      * 將整數轉換為OCT 八進位字串 (靠右，左補 0)
+      *
+      * 參數： 
+      *   BY VALUE     SIGNED-INT 數值
+      *   BY REFERENCE PIC X(11)  字串
+      *
+      * 回傳值：
+      *   無
+      *----------------------------------------------------   
+      * HEX_STR 
+      * 將整數轉換為 HEX 16 進位字串 (靠右，左補 0)
+      *
+      * 參數： 
+      *   BY VALUE     SIGNED-INT 數值
+      *   BY REFERENCE PIC X(8)  字串
+      *
+      * 回傳值：
+      *   無
+      *----------------------------------------------------   
+      
+      *----------------------------------------------------      
+      * MW IPC OP CODE 
+      *----------------------------------------------------      
+        01  IPC_OP_CODE                          SIGNED-INT.
+            78  IPC_MQ_MK                         VALUE 101.
+            78  IPC_MQ_RM                          VALUE 102.
+            78  IPC_MQ_SEND                        VALUE 103.
+            78  IPC_MQ_RECV                        VALUE 104.
+            78  IPC_MQ_STATUS                      VALUE 105. 
+
+            78  IPC_MSG_MK                         VALUE 201.
+            78  IPC_MSG_RM                         VALUE 202.
+            78  IPC_MSG_OPEN                       VALUE 203.
+            78  IPC_MSG_SEND                       VALUE 204.
+            78  IPC_MSG_RECV                       VALUE 205.
+            78  IPC_MSG_STATUS                     VALUE 206.
+            78  IPC_MSG_RMID                       VALUE 207.
+            78  IPC_MSG_STSID                      VALUE 208.
+            
+      *----------------------------------------------------
+      * CONSTANT 
+      *----------------------------------------------------
+        01  IPC_CONSTANTS                         SIGNED-INT.
+            78  IPCERR_OK                         VALUE 0.
+            78  IPCERR_ERROR                      VALUE -1.
+            78  IPCERR_EACCES                     VALUE 13.
+            78  IPCERR_EAGAIN                     VALUE 35.
+            78  IPCERR_EINVAL                     VALUE 22.
+            78  IPCERR_ENOMEM                     VALUE 12.
+            78  IPCERR_EPERM                      VALUE 1.
+            78  IPCERR_EINTR                      VALUE 4.
+            78  IPCERR_EFAULT                     VALUE 14.
+            78  IPCERR_ENOMSG                     VALUE 91.
+           
+            78  IPC_BLOCK                         VALUE 0.
+            78  IPC_CREAT                         VALUE 512.
+            78  IPC_EXCL                          VALUE 1024.
+            78  IPC_NOWAIT                        VALUE 2048.
+            78  MSG_NOERROR                       VALUE 4096.  
+           
+            78  IPC_NAME_LEN                      VALUE 255.
+      *----------------------------------------------------
+      * DATA STRUCTURE 
+      *----------------------------------------------------
+      *01 IPC-NAME-T.
+      *     05  IPC-NAME                PIC X(IPC_NAME_LEN) VALUE " ".
+      *     05  FILLER                  PIC X(1).
+      *01 IPC-MSG-DATA-T.
+      *     05  IPC-MSG-LEN                      SIGNED-INT.
+      *     05  IPC-MSG-TYPE                     SIGNED-LONG.   
+      *     05  IPC-MSG-DATA                       PIC X(1).  自定資料，請參考範例程式    
+        01 IPC-MSG-ATTR-T.
+            05  IPC-MSGATTR-KEY                     SIGNED-INT.
+            05  IPC-MSGATTR-MSGID                   SIGNED-INT.
+            05  IPC-MSGATTR-UID                     SIGNED-INT.
+            05  IPC-MSGATTR-GID                     SIGNED-INT.
+            05  IPC-MSGATTR-MODE                    SIGNED-INT.  
+            05  IPC-MSGATTR-MSGCNT                  SIGNED-LONG.
+            05  IPC-MSGATTR-MSGSIZE                 SIGNED-LONG.
+            05  IPC-MSGATTR-CREATED                 PIC 9(14).
+            05  FILLER  REDEFINES   IPC-MSGATTR-CREATED.
+                10  IPC-MSGATTR-CDATE               PIC 9(8).
+                10  IPC-MSGATTR-CTIME               PIC 9(6).
+            05  IPC-MSGATTR-LASTSEND                PIC 9(14).
+            05  FILLER REDEFINES IPC-MSGATTR-LASTSEND.
+                10  IPC-MSGATTR-SDATE               PIC 9(8).
+                10  IPC-MSGATTR-STIME               PIC 9(6).   
+            05  IPC-MSGATTR-LASTRECV                PIC 9(14).
+            05  FILLER REDEFINES IPC-MSGATTR-LASTRECV.
+                10  IPC-MSGATTR-RDATE               PIC 9(8).
+                10  IPC-MSGATTR-RTIME               PIC 9(6).   
+            05  IPC-MSGATTR-SPID                    SIGNED-INT.
+            05  IPC-MSGATTR-RPID                    SIGNED-INT.           
+      *----------------------------------------------------
+      * FUNCTION 
+      *----------------------------------------------------
+      * IPC_MSG_MK 
+      * 產生 SYS/V MSG QUE
+      *  
+      * 參數： 
+      *   BY-REF    SIGNED-INT  回傳 MSGID 
+      *   BY-REF    IPC-NAME-T  MSGQUE 名稱，必須為有效的目錄或檔案名稱
+      *
+      * 回傳值：
+      *   0         OK
+      *   < 0       由 SERROR 取得錯誤訊息
+      *----------------------------------------------------             
+      * IPC_MSG_RM 
+      * 刪除 SYS/V MSG QUE
+      *  
+      * 參數： 
+      *   BY-REF    IPC-NAME-T  MSGQUE 名稱，必須為有效的目錄或檔案名稱
+      *
+      * 回傳值：
+      *   0         OK
+      *   < 0       由 SERROR 取得錯誤訊息
+      *----------------------------------------------------             
+      * IPC_MSG_RMID 
+      * 刪除 SYS/V MSG QUE
+      * MSGQUE ID 可由 ipcs -q 或 IPC_MSG_OPEN, IPC_MSG_MK
+      *  
+      * 參數： 
+      *   BY-VALUE	SIGNED-INT	MSGQUE ID 
+      *
+      * 回傳值：
+      *   0         OK
+      *   < 0       由 SERROR 取得錯誤訊息
+      *----------------------------------------------------             
+      * IPC_MSG_SEND 
+      * 傳送 SYS/V MSG QUE 訊息
+      *  
+      * 參數： 
+      *   BY-VAL    SIGNED-INT      MSGID(於 IPC_MSG_MK 取得) 
+      *   BY-REF    IPC-MSG-DATA-T  傳送資料
+      *                             IPC-MSG-LEN     自定資料 IPC-MSG-DATA 的長度
+      *                             IPC-MSG-TYPE    資料格式，必須 > 0
+      *                             IPC-MSG-DATA    自訂資料
+      *   BY-VAL    SIGNED-INT      MSG FLAG 
+      *                             IPC_NOWAIT      以 NON-BLOCK 方式
+      *                             IPC_BLOCK       以 BLOCK 方式(QUE FULL時)
+      *
+      * 回傳值：
+      *   IPCERR_OK                 OK
+      *   IPCERR_EAGAIN             QUE FULL 且 MSG FLG = IPC_NOWAIT
+      *   IPCERR_EACCES             無 MSG QUE 存取權限
+      *   IPCERR_EIDRM              MSG QUE 已刪除
+      *   IPCERR_EINVAL             參數錯誤
+      *   IPCERR_ENOMEM             OUT OF MEMORY 記憶體不足
+      *   IPCERR_EINTR              中斷傳送 
+      *----------------------------------------------------             
+      * IPC_MSG_RECV 
+      * 接收 SYS/V MSG QUE 訊息
+      *  
+      * 參數： 
+      *   BY-VAL    SIGNED-INT      MSGID(於 IPC_MSG_MK 取得) 
+      *   BY-REF    IPC-MSG-DATA-T  傳送資料
+      *                             IPC-MSG-LEN     自定資料 IPC-MSG-DATA 的最大長度
+      *                                             執行後，其值為實際接收的資料長度 
+      *                             IPC-MSG-TYPE    資料格式，必須 >= 0 (0=ALL)
+      *                                             執行後，其值為實際接收的格式 
+      *                             IPC-MSG-DATA    自訂資料
+      *   BY-VAL    SIGNED-INT      MSG FLAG 
+      *                             IPC_NOWAIT      以 NON-BLOCK 方式
+      *                             IPC_BLOCK       以 BLOCK 方式 (QUE EMPTY時)
+      *                             MSG_NOERROR     若實際資料長度 > IPC-MSG-LEN 
+      *                                             仍執行接收，但回傳 IPCERR_E2BIG 
+      *
+      * 回傳值：
+      *   IPCERR_OK                 OK
+      *   IPCERR_E2BIG              DATA TOO BIG 當  MSGFLG 含有 MSG_NOERROR
+      *   IPCERR_EAGAIN             QUE FULL 且 MSG FLG = IPC_NOWAIT
+      *   IPCERR_EACCES             無 MSG QUE 存取權限
+      *   IPCERR_EIDRM              MSG QUE 已刪除
+      *   IPCERR_EINVAL             參數錯誤
+      *   IPCERR_ENOMEM             OUT OF MEMORY 記憶體不足
+      *   IPCERR_EINTR              中斷傳送 
+      *   IPCERR_ENOMSG             當 QUE EMPTY 且 MSGFLG 含有 IPC_NOWAIT 
+      *----------------------------------------------------             
+      * IPC_MSG_STATUS 
+      * 查詢 SYS/V MSG QUE 狀態
+      *  
+      * 參數： 
+      *   BY-REF    IPC-NAME-T      MSGQUE 名稱，必須為有效的目錄或檔案名稱
+      *   BY-REF    IPC-MSG-ATTR-T  MSG QUE 狀態資料
+      *                             IPC-MSGATTR-UID         OWNER UID
+      *                             IPC-MSGATTR-GID         OWNER GID 
+      *                             IPC-MSGATTR-MODE        FILE MODE (EX: 0660)
+      *                             IPC-MSGATTR-MSGCNT      MSG CNT IN QUE 
+      *                             IPC-MSGATTR-MSGSIZE     MSG QUE SIZE (MAX)
+      *                             IPC-MSGATTR-CREATED     CREATED TIME (YYYYMMDDHHMMSS)
+      *                             IPC-MSGATTR-LASTSEND    LAST SEND TIME
+      *                             IPC-MSGATTR-LASTRECV    LAST RECV TIME
+      *                             IPC-MSGATTR-SPID        LAST SEND BY UID 
+      *                             IPC-MSGATTR-RPID        LAST RECV BY UID 
+      * 
+      * 回傳值：
+      *   IPCERR_OK                 OK
+      *   < 0                       由 SERROR 取得錯誤訊息 
+      *----------------------------------------------------      
+      
+      *----------------------------------------------------      
+      * HDR HISTOGRAM OP CODE 
+      *----------------------------------------------------      
+        01  HDR_OP_CODE                          SIGNED-INT.
+            78  HDR_INIT                           VALUE 101.
+            78  HDR_VALUE                          VALUE 102.
+            78  HDR_SAVE                           VALUE 103.
+      
+        01  HDR-CONSTANTS                         SIGNED-INT.
+            78  HDR_CLASSIC                          VALUE 0.
+            78  HDR_CSV                              VALUE 1.
+      *----------------------------------------------------
+      * DATA STRUCTURE 
+      *----------------------------------------------------
+      *01 FILE-NAME-T.
+      *     05  FILE-NAME               PIC X(FILE_NAME_LEN) VALUE " ".
+      *     05  FILLER                  PIC X(1).
+      *----------------------------------------------------
+      * FUNCTION 
+      *----------------------------------------------------
+      * HDR_INIT 
+      * 初始化
+      *
+      * 參數： 
+      *   BY REFERENCE	POINTER			HDR 物件(回傳)
+      *   BY VALUE      SIGNED-LONG 	MIN VALUE 最小值 EX: 1
+      *   BY VALUE      SIGNED-LONG     MAX VALUE 最大值 EX: 9999999999
+      *   BY VALUE      SIGNED-INT      精準位數，必須為 1 .. 5  
+      *
+      * 回傳值：
+      *   IPCERR_OK				OK
+      *   < 0                   透過 SERROR 取的錯誤訊息
+      *----------------------------------------------------   
+      * HDR_VALUE 
+      * 記錄數值
+      *
+      * 參數： 
+      *   BY VALUE   	POINTER			HDR 物件(由 HDR_INIT 回傳)
+      *   BY VALUE      SIGNED-LONG 	數字值
+      *
+      * 回傳值：
+      *   IPCERR_OK				OK
+      *   IPCERR_ERROR          FAILED 
+      *----------------------------------------------------   
+      * HDR_SAVE 
+      * 將 HDR HISTOGRAM 結果，輸出至檔案
+      *
+      * 參數： 
+      *   BY VALUE   	POINTER			HDR 物件(由 HDR_INIT 回傳)
+      *   BY REFERENCE	FILE-NAME-T		檔名
+      *   BY VALUE      SIGNED-INT 	    TICKS HALF, EX: 5
+      *   BY REFERENCE  DOUBLE          倍數 EX: 1 , 1000
+      *   BY VALUE      SIGNED-INT      精準位數，必須為 1 .. 5  
+      *   BY VALUE      SIGNED-INT      輸出格式
+      *                                 HDR_CLASSIC
+      *                                 HDR_CSV
+      *
+      * 回傳值：
+      *   IPCERR_OK				OK
+      *   < 0                   透過 SERROR 取的錯誤訊息
+      *----------------------------------------------------   
+      
+      
+      *----------------------------------------------------      
+      * END OF MWAPI.DEF        
