@@ -1,23 +1,39 @@
 # acumw
-AcuCOBOL IPC Library 
-<p>
-This is a simple project, which bind IPC calls to runcbl of AcuCOBOL v9.x for AIX.
-</p>
+AcuCOBOL IPC Library for AIX
 
-Platform:
-<ul> 
-  <li>AIX5.3
-  <li>AIX6.1
-  <li>AIX7.1
-</ul>
-<p>
-Compiler: GNU/gcc 4.8.5 
-</p>
+This is a simple project, which bind C IPC calls to runcbl of AcuCOBOL v9.x for AIX.
 
-Features:
-<ul>
-  <li>SYS/V, POSIX Message Queue 
-  <li>Not Supported yet: Semaphore, SharedMemory, MemoryMappedFile 
-</ul>  
-  
+## Tables Contents
+
+- [Platforms](#platform)
+- [Features](#features)
+- [Environments](#environments)
+- [Samples](#samples)
+
+## Platform:
+IBM/AIX 64bits
+* AIX5.3
+* AIX6.1
+* AIX7.1
+
+Compiler
+* GNU/gcc 4.8.5 
+* Microfocus AcuCOBOL v9
+
+## Features:
+Supported:
+* SYS/V Message Queue (msg_xxx)
+* POSIX Message Queue (mq_xxx)
+
+Not Supported yet:
+* Semaphore
+* Shared Memory
+* Memory Mapped File
+
+## Environments
+
+
+## Samples 
+
+
   
